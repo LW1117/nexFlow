@@ -1,25 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <form>
+    <form action="{{ url_for('detect') }}" enctype="multipart/form-data" method="POST">
         <div class="container text-center">
+            {% if img %}
             <div class="row">
                 <div class="col">
-                    <img id="input_image" class="rounded mx-auto d-block" src="{{url_for('static', filename='5.jpg')}}" alt="input image" style="height: 550px; width: 550px; margin-bottom: 20px;">
+                    <img id="input_image" class="rounded mx-auto d-block" src="{{ img }}" alt="input image" style="height: 550px; width: 550px; margin-bottom: 20px;">
                 </div>
                 <div class="col">
-                    <img id="output_image" class="rounded mx-auto d-block" src="{{url_for('static', filename='5.jpg')}}" alt="output image" style="height: 550px; width: 550px; margin-bottom: 20px;">
+                    <img id="output_image" class="rounded mx-auto d-block" src="static/{{ op_img }}" alt="output image" style="height: 550px; width: 550px; margin-bottom: 20px;">
                 </div>
             </div>
+            {% endif %}
             <div class="row">
                 <div class="col">
+                    <input type="file" name="img">
                     <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
+                {% if img %}
                 <div class="col">
                     <h3 id="output_text">
                         Detected Vehicles: {{result}}
                     </h3>
                 </div>
+                {% endif %}
             </div>
         </div>
     </form>

@@ -1,3 +1,4 @@
+import cv2
 from ultralytics import YOLO
 
 
@@ -7,6 +8,15 @@ file_name = '5.jpg'
 
 model = YOLO(model_path)
 
-def objectDetect():
-    results = model(image_path, classes=[1, 2, 3, 5, 7])
-    return results
+def objectDetect(img):
+    results = model(img, classes=[1, 2, 3, 5, 7])
+    img_rgb = 0
+
+    for i, r in enumerate(results):
+    # Plot results image
+        im_rgb = r.plot()  # BGR-order numpy array
+
+    # Show results to screen (in supported environments)
+    img_rgb = r.save()
+    
+    return results, img_rgb
