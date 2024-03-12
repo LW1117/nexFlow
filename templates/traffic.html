@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .col {
+        border: 1px black solid;
+        text-align: center;
+        padding: 50px;
+    }
+</style>
+
+<div class="row">
+    <div class="col" id="col-1" style="background-color: greenyellow;">
+        Green
+    </div>
+</div>
+<div class="row">
+    <div class="col" id="col-2" style="background-color: orange;">
+        Orange
+    </div>
+</div>
+<div class="row">
+    <div class="col" id="col-3" style="background-color: red;">
+        Red
+    </div>
+</div>
+
+<script>
+    const greenBox = document.getElementById("col-1")
+    const orangeBox = document.getElementById("col-2")
+    const redBox = document.getElementById("col-3")  
+</script>
+
+{% endblock %}

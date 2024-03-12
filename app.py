@@ -30,6 +30,9 @@ def detect():
         return render_template('detect.html',result=len(results[0].boxes), img=img, op_img=op_img)
     return render_template('detect.html',result=0,img=0,op_img=0)
 
+@app.route("/traffic")
+def traffic_sim():
+    return render_template('traffic.html')
 
 
 if __name__ == "__main__":
